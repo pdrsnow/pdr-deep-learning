@@ -8,12 +8,16 @@ packages = [{ include = "src" }]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-torch = { version = "^2.3.0+cu118", source = "torch" }
+# 使用 cpu
 tensorflow = { version = "^2.16.1", source = "aliyun" }
+# 使用 gpu, cuda <=11.8, cuDNN <= 8.9
+# tensorflow-gpu = { version = "<2.11", source = "aliyun" }
 tensorflow-io-gcs-filesystem = { version = "^0.31.0", "python" = ">=3.10,<3.12" }
+torch = { version = "^2.3.0+cu118", source = "torch" }
 pandas = "^2.2.2"
 matplotlib = "^3.8.4"
 scikit-learn = "^1.5.0"
+PyYAML = "^6.0.1"
 
 [build-system]
 requires = ["poetry-core"]
