@@ -15,15 +15,14 @@
 > + Win内嵌版本：<https://www.python.org/ftp/python/3.10.11/python-3.10.11-embed-amd64.zip>
 > + Linux版本：<https://www.python.org/ftp/python/3.10.11/Python-3.10.11.tar.xz>
 
-**注意事项**
-
+> **注意事项**
 > + 在机器学习过程中会发现许多模块缺失，建议直接使用安装版本的或使用`Anaconda`集成环境。
 > + 本文中所有的`APP_HOME`都是指代项目或应用的根目录。
 > + 如果环境变量，本文中的所有`python -m`均可以去掉。
 
-### 2.2. Windows安装
+### 2.1. Windows安装
 
-#### 2.2.1. 环境配置
+#### 2.1.1. 环境配置
 
 ```shell
 # Windows PowerShell
@@ -32,14 +31,14 @@ $Env:PYTHONPATH="$Env:PYTHONHOME\Lib\site-packages"
 $Env:Path="$Env:PYTHONHOME;$Env:PYTHONHOME\Scripts;$Env:Path;"
 ```
 
-#### 2.2.2. 执行文件安装
+#### 2.1.2. 执行文件安装
 
 ```shell
 # 下载后，安装至`$Env:PYTHONHOME`所指路径即可
 curl -OL "https://www.python.org/ftp/python/3.10.11/python-3.10.11-amd64.exe"
 ```
 
-#### 2.2.3. 内嵌版本安装
+#### 2.1.3. 内嵌版本安装
 
 ```shell
 # 创建并进入`Python`的安装路径
@@ -59,14 +58,14 @@ python get-pip.py
 echo "Lib/site-packages" >> python310._pth
 ```
 
-### 2.3. Linux安装
+### 2.2. Linux安装
 
-#### 2.3.1. 环境配置
+#### 2.2.1. 环境配置
 
 ```shell
 PYTHONHOME="/home/tools/python310"
-LD_LIBRARY_PATH="$PYTHONHOME/bin:$LD_LIBRARY_PATH"
-PATH="$PATH:$PYTHONHOME/bin"
+LD_LIBRARY_PATH="$PYTHONHOME/lib:$LD_LIBRARY_PATH"
+PATH="$PYTHONHOME/bin:$PATH"
 export PYTHONHOME LD_LIBRARY_PATH PATH
 ```
 
@@ -77,7 +76,27 @@ export PYTHONHOME LD_LIBRARY_PATH PATH
 export PYTHONPATH="$APP_HOME/lib/site-packages:$PYTHONHOME"
 ```
 
-#### 2.3.2. 下载安装
+#### 2.2.2. 下载安装
+
+> **注意事项**：下面安装需要有外网环境, 如内网环境安装有两种方案
+> 1. 提前准备好所有需要外网下载的资源，然后按需编译安装；
+> 2. 准备一个与内网环境相近(最好一致)的虚拟环境，按下面过程编译后，直接打包移植；
+
+```shell
+# 如果没有外网, 需要自行编译安装或在`yum源`找齐所需包和依赖安装
+yum install -y libffi-devel
+
+curl -OL 'https://www.python.org/ftp/python/3.10.11/Python-3.10.11.tgz'
+curl -OL 'https://bootstrap.pypa.io/get-pip.py'
+
+# 执行`./configure`会提示使用`--enable-optimizations`
+# 但部分系统不支持该参数(`make`会出错), 建议去掉
+./configure --prefix=$PYTHONHOME --with-ssl-default-suites=openssl --enable-shared
+make && make install
+
+# 常用模块安装(无外网环境可忽略, 在项目发布时一起打包好所需依赖就行)
+python3 -m pip install -U pip setuptools wheel poetry -i "https://mirrors.aliyun.com/pypi/simple"
+```
 
 ### 3. `Pip`包管理
 
@@ -199,7 +218,7 @@ python -m poetry add <model...> --source=<source>
 python -m poetry shell
 
 # 在`virtualenv`环境运行脚本
-python -m poetry run src/demo.py
+python -m poetry run python src/demo.py
 ```
 
 > + 官方文档-poetry: <https://python-poetry.org/docs/basic-usage/>
