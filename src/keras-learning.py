@@ -35,7 +35,7 @@ def demo_01_sequential():
     model.compile(optimizer='sgd', loss="mse")
 
     # 训练模型(迭代模型)
-    for step in range(1001):
+    for step in range(3001):
         # 每次训练一个批次
         cost = model.train_on_batch(x_data, y_data)
         # 每500个batch打印一次cost值
@@ -90,7 +90,7 @@ def demo_02_square():
     model.compile(optimizer=sgd, loss="mse")
 
     # 训练模型(迭代模型)
-    for step in range(1001):
+    for step in range(3001):
         # 每次训练一个批次
         cost = model.train_on_batch(x_data, y_data)
         # 每500个batch打印一次cost值
@@ -116,7 +116,8 @@ def demo_03_mnist():
     """
     MNIST数据集
     """
-    from keras import datasets, utils, models, layers, optimizers
+    from keras import utils, models, layers, optimizers
+    from tensorflow.keras import datasets
     # mnist数据集 生成虚拟数据(60000, 28, 28)
     (x_train, y_train), (x_test, y_test) = datasets.mnist.load_data()
     print(f"x_train shape:{x_train.shape}, y_train shape:{y_train.shape}")
@@ -178,7 +179,8 @@ def demo_04_cross_entropy():
     """
     交叉熵
     """
-    from keras import datasets, utils, models, layers, optimizers
+    from keras import utils, models, layers, optimizers
+    from tensorflow.keras import datasets
     # mnist数据集 生成虚拟数据(60000, 28, 28)
     (x_train, y_train), (x_test, y_test) = datasets.mnist.load_data()
     print(f"x_train shape:{x_train.shape}, y_train shape:{y_train.shape}")
@@ -221,7 +223,8 @@ def demo_06_dropout():
     """
     Dropout
     """
-    from keras import datasets, utils, models, layers, optimizers
+    from keras import utils, models, layers, optimizers
+    from tensorflow.keras import datasets
     # mnist数据集 生成虚拟数据(60000, 28, 28)
     (x_train, y_train), (x_test, y_test) = datasets.mnist.load_data()
     print(f"x_train shape:{x_train.shape}, y_train shape:{y_train.shape}")
@@ -258,7 +261,8 @@ def demo_07_regularizers():
     """
     正则化应用
     """
-    from keras import datasets, utils, models, layers, optimizers, regularizers
+    from keras import utils, models, layers, optimizers, regularizers
+    from tensorflow.keras import datasets
     # mnist数据集 生成虚拟数据(60000, 28, 28)
     (x_train, y_train), (x_test, y_test) = datasets.mnist.load_data()
     print(f"x_train shape:{x_train.shape}, y_train shape:{y_train.shape}")
@@ -306,7 +310,8 @@ def demo_08_optimizers():
 
     个人认为可以分为三类(SGD, Momentum, NAG), (Adagrad, RMSprop, Adadelta), (Adam)
     """
-    from keras import datasets, utils, models, layers, optimizers, regularizers
+    from keras import utils, models, layers, optimizers, regularizers
+    from tensorflow.keras import datasets
     # mnist数据集 生成虚拟数据(60000, 28, 28)
     (x_train, y_train), (x_test, y_test) = datasets.mnist.load_data()
     print(f"x_train shape:{x_train.shape}, y_train shape:{y_train.shape}")
@@ -356,7 +361,8 @@ def demo_09_cnn():
     LeNet-5
     :return:
     """
-    from keras import datasets, utils, models, layers, optimizers
+    from keras import utils, models, layers, optimizers
+    from tensorflow.keras import datasets
     # mnist数据集 生成虚拟数据(60000, 28, 28)
     (x_train, y_train), (x_test, y_test) = datasets.mnist.load_data()
     print(f"x_train shape:{x_train.shape}, y_train shape:{y_train.shape}")
@@ -405,7 +411,8 @@ def demo_10_rnn():
     RNN(Recurrent Neural Network): 递归(循环)神经网络
     :return:
     """
-    from keras import datasets, utils, models, layers, optimizers
+    from keras import utils, models, layers, optimizers
+    from tensorflow.keras import datasets
     # mnist数据集 生成虚拟数据(60000, 28, 28)
     (x_train, y_train), (x_test, y_test) = datasets.mnist.load_data()
     print(f"x_train shape:{x_train.shape}, y_train shape:{y_train.shape}")
