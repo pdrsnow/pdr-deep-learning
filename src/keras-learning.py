@@ -1,8 +1,8 @@
 import os as os_
 
+# KERAS_BACKEND = [jax|tensorflow|torch]
+os_.environ['KERAS_BACKEND'] = 'tensorflow'
 os_.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
-os_.environ["KERAS_BACKEND"] = "torch"
-# os_.environ["KERAS_BACKEND"] = "tensorflow"
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -32,7 +32,7 @@ def demo_01_sequential():
     # 编译模型
     # sgd(Stochastic Gradient Descent): 随机梯度下降法
     # mse(Mean Squared Error): 均方误差
-    model.compile(optimizer='sgd', loss="mse")
+    model.compile(optimizer='sgd', loss='mse')
 
     # 训练模型(迭代模型)
     for step in range(3001):
@@ -87,7 +87,7 @@ def demo_02_square():
     # 编译模型, optimizer优化器
     # sgd(Stochastic Gradient Descent): 随机梯度下降法
     # mse(Mean Squared Error): 均方误差
-    model.compile(optimizer=sgd, loss="mse")
+    model.compile(optimizer=sgd, loss='mse')
 
     # 训练模型(迭代模型)
     for step in range(3001):
@@ -120,15 +120,15 @@ def demo_03_mnist():
     from tensorflow.keras import datasets
     # mnist数据集 生成虚拟数据(60000, 28, 28)
     (x_train, y_train), (x_test, y_test) = datasets.mnist.load_data()
-    print(f"x_train shape:{x_train.shape}, y_train shape:{y_train.shape}")
+    print(f'x_train shape:{x_train.shape}, y_train shape:{y_train.shape}')
     # 显示数据集
     # plt.matshow(x_train[0], cmap='Grays')
     # plt.matshow(x_test[0], cmap='Oranges')
     # plt.show()
 
     # Scale images to the [0, 1] range
-    x_train = x_train.astype("float32") / 255
-    x_test = x_test.astype("float32") / 255
+    x_train = x_train.astype('float32') / 255
+    x_test = x_test.astype('float32') / 255
     # Make sure images have shape (28, 28, 1)
     # x_train = np.expand_dims(x_train, -1)
     # x_test = np.expand_dims(x_test, -1)
@@ -139,7 +139,7 @@ def demo_03_mnist():
     # (60000, 28, 28) -> (60000, 784)
     x_train = x_train.reshape(x_train.shape[0], -1)
     x_test = x_test.reshape(x_test.shape[0], -1)
-    print(f"x_train shape:{x_train.shape}, y_train shape:{y_train.shape}")
+    print(f'x_train shape:{x_train.shape}, y_train shape:{y_train.shape}')
     # plt.matshow(x_train, cmap='Grays')
     # plt.matshow(x_test, cmap='Oranges')
     # plt.show()
@@ -170,7 +170,7 @@ def demo_03_mnist():
 
     # 模型预测
     # y_perd = model.predict(x_test)
-    # print("y_perd shape:", y_perd.shape)
+    # print('y_perd shape:', y_perd.shape)
     # plt.matshow(y_perd, cmap='Grays')
     # plt.show()
 
@@ -183,12 +183,12 @@ def demo_04_cross_entropy():
     from tensorflow.keras import datasets
     # mnist数据集 生成虚拟数据(60000, 28, 28)
     (x_train, y_train), (x_test, y_test) = datasets.mnist.load_data()
-    print(f"x_train shape:{x_train.shape}, y_train shape:{y_train.shape}")
+    print(f'x_train shape:{x_train.shape}, y_train shape:{y_train.shape}')
 
     # (60000, 28, 28) -> (60000, 784)
     x_train = x_train.reshape(x_train.shape[0], -1) / 255
     x_test = x_test.reshape(x_test.shape[0], -1) / 255
-    print(f"x_train shape:{x_train.shape}, y_train shape:{y_train.shape}")
+    print(f'x_train shape:{x_train.shape}, y_train shape:{y_train.shape}')
     y_train = utils.to_categorical(y_train, num_classes=10)
     y_test = utils.to_categorical(y_test, num_classes=10)
 
@@ -227,12 +227,12 @@ def demo_06_dropout():
     from tensorflow.keras import datasets
     # mnist数据集 生成虚拟数据(60000, 28, 28)
     (x_train, y_train), (x_test, y_test) = datasets.mnist.load_data()
-    print(f"x_train shape:{x_train.shape}, y_train shape:{y_train.shape}")
+    print(f'x_train shape:{x_train.shape}, y_train shape:{y_train.shape}')
 
     # (60000, 28, 28) -> (60000, 784)
     x_train = x_train.reshape(x_train.shape[0], -1) / 255
     x_test = x_test.reshape(x_test.shape[0], -1) / 255
-    print(f"x_train shape:{x_train.shape}, y_train shape:{y_train.shape}")
+    print(f'x_train shape:{x_train.shape}, y_train shape:{y_train.shape}')
     y_train = utils.to_categorical(y_train, num_classes=10)
     y_test = utils.to_categorical(y_test, num_classes=10)
 
@@ -265,12 +265,12 @@ def demo_07_regularizers():
     from tensorflow.keras import datasets
     # mnist数据集 生成虚拟数据(60000, 28, 28)
     (x_train, y_train), (x_test, y_test) = datasets.mnist.load_data()
-    print(f"x_train shape:{x_train.shape}, y_train shape:{y_train.shape}")
+    print(f'x_train shape:{x_train.shape}, y_train shape:{y_train.shape}')
 
     # (60000, 28, 28) -> (60000, 784)
     x_train = x_train.reshape(x_train.shape[0], -1) / 255
     x_test = x_test.reshape(x_test.shape[0], -1) / 255
-    print(f"x_train shape:{x_train.shape}, y_train shape:{y_train.shape}")
+    print(f'x_train shape:{x_train.shape}, y_train shape:{y_train.shape}')
     y_train = utils.to_categorical(y_train, num_classes=10)
     y_test = utils.to_categorical(y_test, num_classes=10)
 
@@ -314,12 +314,12 @@ def demo_08_optimizers():
     from tensorflow.keras import datasets
     # mnist数据集 生成虚拟数据(60000, 28, 28)
     (x_train, y_train), (x_test, y_test) = datasets.mnist.load_data()
-    print(f"x_train shape:{x_train.shape}, y_train shape:{y_train.shape}")
+    print(f'x_train shape:{x_train.shape}, y_train shape:{y_train.shape}')
 
     # (60000, 28, 28) -> (60000, 784)
     x_train = x_train.reshape(x_train.shape[0], -1) / 255
     x_test = x_test.reshape(x_test.shape[0], -1) / 255
-    print(f"x_train shape:{x_train.shape}, y_train shape:{y_train.shape}")
+    print(f'x_train shape:{x_train.shape}, y_train shape:{y_train.shape}')
     y_train = utils.to_categorical(y_train, num_classes=10)
     y_test = utils.to_categorical(y_test, num_classes=10)
 
@@ -365,12 +365,12 @@ def demo_09_cnn():
     from tensorflow.keras import datasets
     # mnist数据集 生成虚拟数据(60000, 28, 28)
     (x_train, y_train), (x_test, y_test) = datasets.mnist.load_data()
-    print(f"x_train shape:{x_train.shape}, y_train shape:{y_train.shape}")
+    print(f'x_train shape:{x_train.shape}, y_train shape:{y_train.shape}')
 
     # (60000, 28, 28) -> (60000, 784)
     x_train = x_train.reshape(-1, 28, 28, 1) / 255
     x_test = x_test.reshape(-1, 28, 28, 1) / 255
-    print(f"x_train shape:{x_train.shape}, y_train shape:{y_train.shape}")
+    print(f'x_train shape:{x_train.shape}, y_train shape:{y_train.shape}')
     y_train = utils.to_categorical(y_train, num_classes=10)
     y_test = utils.to_categorical(y_test, num_classes=10)
 
@@ -415,12 +415,12 @@ def demo_10_rnn():
     from tensorflow.keras import datasets
     # mnist数据集 生成虚拟数据(60000, 28, 28)
     (x_train, y_train), (x_test, y_test) = datasets.mnist.load_data()
-    print(f"x_train shape:{x_train.shape}, y_train shape:{y_train.shape}")
+    print(f'x_train shape:{x_train.shape}, y_train shape:{y_train.shape}')
 
     # (60000, 28, 28)
     x_train = x_train / 255.0
     x_test = x_test / 255.0
-    print(f"x_train shape:{x_train.shape}, y_train shape:{y_train.shape}")
+    print(f'x_train shape:{x_train.shape}, y_train shape:{y_train.shape}')
     y_train = utils.to_categorical(y_train, num_classes=10)
     y_test = utils.to_categorical(y_test, num_classes=10)
 

@@ -66,4 +66,21 @@ Build cuda_11.8.r11.8/compiler.31833905_0
 # cudnn-windows-x86_64-8.9.7.29_cuda11-archive.zip
 curl -OL "https://developer.download.nvidia.cn/compute/cudnn/redist/cudnn/\
 windows-x86_64/cudnn-windows-x86_64-8.9.7.29_cuda11-archive.zip"
+
+# 下载后解压到`C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8`
+```
+
+```
+cd /d "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.1\bin"
+mklink /H cudart64_110.dll  cudart64_12.dll
+mklink /H cublas64_11.dll   cublas64_12.dll
+mklink /H cublasLt64_11.dll cublasLt64_12.dll
+mklink /H cufft64_10.dll    cufft64_11.dll
+mklink /H cusparse64_11.dll cusparse64_12.dll
+
+为 cudart64_110.dll <<===>> cudart64_12.dll 创建了硬链接
+为 cublas64_11.dll <<===>> cublas64_12.dll 创建了硬链接
+为 cublasLt64_11.dll <<===>> cublasLt64_12.dll 创建了硬链接
+为 cufft64_10.dll <<===>> cufft64_11.dll 创建了硬链接
+为 cusparse64_11.dll <<===>> cusparse64_12.dll 创建了硬链接
 ```

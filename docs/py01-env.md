@@ -8,6 +8,8 @@
 > + Poetry官网：<https://python-poetry.org>
 > + Python项目管理：<https://packaging.python.org/en/latest/tutorials/packaging-projects/>
 
+> + 官方文档：<https://docs.python.org/zh-cn/3.9/howto/>
+
 ## 2. `Python`安装
 
 > 这里以3.10.11版本为例
@@ -214,6 +216,10 @@ python -m poetry add <model...> --source=<source>
 ### 5.4. 其他用法
 
 ```shell
+# 添加源
+poetry source add tsinghua https://pypi.tuna.tsinghua.edu.cn/simple
+poetry source add aliyun https://mirrors.aliyun.com/pypi/simple/
+
 # 开启`virtualenv`环境
 python -m poetry shell
 
