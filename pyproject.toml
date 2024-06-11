@@ -12,6 +12,8 @@ pandas = "^2.2.2"
 matplotlib = "^3.8.4"
 scikit-learn = "^1.5.0"
 PyYAML = "^6.0.1"
+psycopg2-binary = "^2.9.9"
+mysql-connector-python = "^8.4.0"
 # 使用 cpu
 torch = { version = "^2.3.0", source = "tsinghua" }
 tensorflow-intel = { version = "^2.16.1", source = "tsinghua" }
