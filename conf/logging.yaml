@@ -1,0 +1,70 @@
+version: 1
+# https://docs.python.org/zh-cn/3.9/howto/logging.html
+formatters:
+  simple:
+    format: '%(asctime)s - %(module)s - %(levelname)s - %(threadName)s : %(message)s'
+    datefmt: '%Y-%m-%d %H:%M:%S'
+  data:
+    format: '%(message)s'
+    datefmt: '%Y-%m-%d %H:%M:%S'
+
+handlers:
+  console:
+    level: INFO
+    formatter: simple
+    class: logging.StreamHandler
+    stream: ext://sys.stdout
+  debugFile:
+    level: DEBUG
+    formatter: simple
+    class: logging.handlers.TimedRotatingFileHandler
+    filename: '${APP_HOME}/logs/debug.log'
+    when: 'midnight'
+    interval: 1
+    backupCount: 3
+    encoding: 'utf-8'
+  infoFile:
+    level: INFO
+    formatter: simple
+    class: logging.handlers.TimedRotatingFileHandler
+    filename: '${APP_HOME}/logs/info.log'
+    when: 'midnight'
+    interval: 1
+    backupCount: 7
+    encoding: 'utf-8'
+  modelFile:
+    level: INFO
+    formatter: data
+    class: logging.FileHandler
+    filename: '${APP_HOME}/logs/model.log'
+    encoding: 'utf-8'
+    mode: 'w'
+
+loggers:
+  fileLogger:
+    level: INFO
+    propagate: 0
+    qualname: FileLogger
+    handlers: [ infoFile ]
+  modelLogger:
+    level: INFO
+    propagate: 0
+    qualname: FileLogger
+    handlers: [ modelFile ]
+
+root:
+  level: DEBUG
+  handlers: [ debugFile, infoFile ]
+
+
+#; %(levelno)s: 打印日志级别的数值
+#; %(levelname)s: 打印日志级别名称
+#; %(pathname)s: 打印当前执行程序的路径，其实就是sys.argv[0]
+#; %(filename)s: 打印当前执行程序名，python如：login.py
+#; %(funcName)s: 打印日志的当前函数
+#; %(lineno)d: 打印日志的当前行号,在第几行打印的日志
+#; %(asctime)s: 打印日志的时间
+#; %(thread)d: 打印线程ID
+#; %(threadName)s: 打印线程名称
+#; %(process)d: 打印进程ID
+#; %(message)s: 打印日志信息
