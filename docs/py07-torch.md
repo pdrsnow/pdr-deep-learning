@@ -7,9 +7,16 @@
 > + PyTorch中文：<https://pytorch-cn.readthedocs.io/zh/latest/>
 
 > + 入门课程：<https://www.bilibili.com/video/BV1iv41117Zg>
-
 > + <https://mofanpy.com/tutorials/machine-learning/torch/>
+
 > + <https://github.com/jdb78/pytorch-forecasting>
+> + <https://pytorch-forecasting.readthedocs.io/en/stable/>
+
+> + <https://pytorch-lightning.readthedocs.io/en/1.1.8/_modules/pytorch_lightning/tuner/lr_finder.html>
+> + <https://lightning.ai/docs/pytorch/stable/>
+
+> + <https://shixiangwang.github.io/pybook/05-function-and-module/#511>
+> + <https://pandas.pydata.org/pandas-docs/stable/user_guide/dsintro.html#dataframe>
 
 ## 2.安装`PyTorch`
 

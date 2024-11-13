@@ -1,0 +1,47 @@
+[tool.poetry]
+name = "llm-glm4"
+version = "0.1.0"
+description = ""
+authors = ["pdrsnow <229269169@qq.com>"]
+readme = "README.md"
+packages = [
+    { include = "llm-glm4", from = "src" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+streamlit = "^1.40.1"
+#
+vllm = "0.6.1"
+transformers = "4.43.2"
+xformers = "^0.0.27.post2"
+torch = { version = "^2.3.1+cu118", source = "torch" }
+#
+zhipuai = "^2.1.5.20230904"
+jupyter-client = "^8.6.3"
+langchain-community = "^0.3.5"
+#
+bitsandbytes = "^0.44.1"
+accelerate = "^1.1.1"
+#
+python-docx = "^1.1.2"
+python-pptx = "^1.0.2"
+pymupdf = "^1.24.13"
+
+
+[[tool.poetry.source]]
+name = "tsinghua"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+priority = "primary"
+
+
+[[tool.poetry.source]]
+name = "torch"
+url = "https://download.pytorch.org/whl/cu118"
+priority = "supplemental"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
