@@ -84,3 +84,30 @@ mklink /H cusparse64_11.dll cusparse64_12.dll
 为 cufft64_10.dll <<===>> cufft64_11.dll 创建了硬链接
 为 cusparse64_11.dll <<===>> cusparse64_12.dll 创建了硬链接
 ```
+
+## 4. 下载安装`Ollama`
+
+> + 下载地址: <https://ollama.com/download/windows>
+> + 参考文档：<https://www.cnblogs.com/obullxl/p/18295202/NTopic2024071001>
+
+```shell
+#环境变量
+
+# 服务地址
+OLLAMA_HOST=127.0.0.1:11434
+
+# 模型存放地址(默认: 用户目录/.ollama/models)
+OLLAMA_MODELS=~/.ollama/models
+```
+
+## 5. 使用`Ollama`进行LLM推理
+
+```shell
+# 使用GLM-4-9b(没有会自动下载)
+ollama run glm4:9b
+```
+
+```shell
+# 使用千问2.5 7b(没有会自动下载)
+ollama run qwen2.5:7b
+```
