@@ -36,7 +36,7 @@ https://www.nvidia.com/download/index.aspx
 ## 2. 下载安装`CUDA`
 
 > + 最新cuda下载地址: <https://developer.nvidia.com/cuda-downloads>
-> + 历史cuda下载地址(建议): <https://developer.nvidia.com/cuda-toolkit-archive>
+> + 历史cuda下载地址: <https://developer.nvidia.com/cuda-toolkit-archive>
 
 ```shell
 # Windwos -> x86_64 -> 11 -> exe(local)
@@ -111,3 +111,7 @@ ollama run glm4:9b
 # 使用千问2.5 7b(没有会自动下载)
 ollama run qwen2.5:7b
 ```
+
+## 6. `CUDA`版本兼容性
+
+> `CUDA`版本向下兼容: 即驱动支持版本>=实际安装版本>=`PyTorch`版本
